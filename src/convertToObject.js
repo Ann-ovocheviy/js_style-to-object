@@ -14,10 +14,12 @@ function convertToObject(sourceString) {
   const kAndV = separetedValues.reduce((prev, item) => {
     const temporary = item.split(':');
 
-    const key = temporary[0].trim();
-    const value = temporary[1].trim();
+    if (temporary.length === 2) {
+      const key = temporary[0].trim();
+      const value = temporary[1].trim();
 
-    return { ...prev, [key]: value };
+      return { ...prev, [key]: value };
+    }
   }, {});
 
   return kAndV;
